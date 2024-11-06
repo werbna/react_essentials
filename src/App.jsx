@@ -5,7 +5,7 @@ import { CORE_CONCEPTS } from "./data";
 
 function App() {
   function handleSelect(selectedButton) {
-    
+    console.log(selectedButton);
   }
 
   return (
@@ -28,10 +28,10 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton onSelect={handleSelect[0]} label='Components'/>
-            <TabButton onSelect={handleSelect[1]} label='JSX'/>
-            <TabButton onSelect={handleSelect[2]} label='Props'/>
-            <TabButton onSelect={handleSelect[3]} label='State'/>
+            <TabButton onSelect={() => handleSelect('components')} label='Components'/>
+            <TabButton onSelect={() => handleSelect('jsx')} label='JSX'/>
+            <TabButton onSelect={() => handleSelect('props')} label='Props'/>
+            <TabButton onSelect={() => handleSelect('state')} label='State'/>
           </menu>
           Dynamic Content
         </section>
