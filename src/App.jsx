@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import TabButton from "./components/TabButton/TabButton";
 import { CORE_CONCEPTS } from "./data";
 import { EXAMPLES } from "./data";
+import { jsx } from "react/jsx-runtime";
 
 function App() {
   const [selectedTopic, setSelectedTopic] = useState();
@@ -50,14 +51,15 @@ function App() {
           <h2>Examples</h2>
           <menu>
             <TabButton
+            isSelected={selectedTopic === "components"}
               onSelect={() => handleSelect("components")}
               label="Components"
             />
-            <TabButton onSelect={() => handleSelect("jsx")} label="JSX" />
-            <TabButton onSelect={() => handleSelect("props")} label="Props" />
-            <TabButton onSelect={() => handleSelect("state")} label="State" />
+            <TabButton isSelected={selectedTopic === 'jsx'} onSelect={() => handleSelect("jsx")} label="JSX" />
+            <TabButton isSelected={selectedTopic === 'props'} onSelect={() => handleSelect("props")} label="Props" />
+            <TabButton isSelected={selectedTopic === 'state'} onSelect={() => handleSelect("state")} label="State" />
           </menu>
-            {tabContent}
+          {tabContent}
         </section>
       </main>
     </div>
