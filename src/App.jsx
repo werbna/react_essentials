@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 import CoreConcept from "./components/CoreConcept/CoreConcept";
 import Header from "./components/Header/Header";
@@ -7,7 +7,7 @@ import { CORE_CONCEPTS } from "./data";
 import { EXAMPLES } from "./data";
 
 function App() {
-  const [ selectedTopic, setSelectedTopic ] = useState('components');
+  const [selectedTopic, setSelectedTopic] = useState();
 
   function handleSelect(selectedButton) {
     //!selectedButton => 'components', 'jsx', 'props', 'state'
@@ -35,20 +35,25 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton onSelect={() => handleSelect('components')} label='Components'/>
-            <TabButton onSelect={() => handleSelect('jsx')} label='JSX'/>
-            <TabButton onSelect={() => handleSelect('props')} label='Props'/>
-            <TabButton onSelect={() => handleSelect('state')} label='State'/>
+            <TabButton
+              onSelect={() => handleSelect("components")}
+              label="Components"
+            />
+            <TabButton onSelect={() => handleSelect("jsx")} label="JSX" />
+            <TabButton onSelect={() => handleSelect("props")} label="Props" />
+            <TabButton onSelect={() => handleSelect("state")} label="State" />
           </menu>
-          <div id="tab-content">
-            <h3>{EXAMPLES[selectedTopic].title}</h3>
-            <p>{EXAMPLES[selectedTopic].description}</p>
-            <pre>
-              <code>
-              {EXAMPLES[selectedTopic].code}
-              </code>
-            </pre>
-          </div>
+          {!selectedTopic ? (
+            <p>Please Select a Topic.</p>
+          ) : (
+            <div id="tab-content">
+              <h3>{EXAMPLES[selectedTopic].title}</h3>
+              <p>{EXAMPLES[selectedTopic].description}</p>
+              <pre>
+                <code>{EXAMPLES[selectedTopic].code}</code>
+              </pre>
+            </div>
+          )}
         </section>
       </main>
     </div>
