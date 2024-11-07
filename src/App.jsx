@@ -4,11 +4,13 @@ import CoreConcept from "./components/CoreConcept/CoreConcept";
 import Header from "./components/Header/Header";
 import TabButton from "./components/TabButton/TabButton";
 import { CORE_CONCEPTS } from "./data";
+import { EXAMPLES } from "./data";
 
 function App() {
-  const [ selectedTopic, setSelectedTopic ] = useState('Please Click a Button');
+  const [ selectedTopic, setSelectedTopic ] = useState('components');
 
   function handleSelect(selectedButton) {
+    //!selectedButton => 'components', 'jsx', 'props', 'state'
     setSelectedTopic(selectedButton);
     // console.log(selectedTopic)
   }
@@ -38,7 +40,15 @@ function App() {
             <TabButton onSelect={() => handleSelect('props')} label='Props'/>
             <TabButton onSelect={() => handleSelect('state')} label='State'/>
           </menu>
-          {selectedTopic}
+          <div id="tab-content">
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+              <code>
+              {EXAMPLES[selectedTopic].code}
+              </code>
+            </pre>
+          </div>
         </section>
       </main>
     </div>
